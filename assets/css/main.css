@@ -3445,6 +3445,9 @@ input, select, textarea {
 	 max-width:200px !important;
 
  }
+ h2 {
+	margin-bottom: 60px !important;
+ }
  .titlePanel{
 	padding-left:60px;
 	padding-top:125px;
@@ -3452,7 +3455,7 @@ input, select, textarea {
 	font-size:40px;
  	}
 	 #two{
-		height: 190vh !important;
+		height: 180vh !important;
 	}
  }
 	#banner {
