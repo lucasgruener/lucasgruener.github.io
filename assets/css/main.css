@@ -3368,21 +3368,18 @@ input, select, textarea {
 /* Banner */
  #two{
 	 background-color: #006466;
-	 height: 152vh !important;
+	 height: 130vh !important;
  }
  .titlePanel{
-	 width:100%;
-	 color: rgb(40, 40, 40);
-	 text-align: left;
-	 padding-top:200px;
+	 width:102%;
 	 padding-left:80px;
-	 padding-bottom:250px;
 	 margin-top: 10px;
 	 background-image:url("../../images/back1.svg");
 	 background-size:cover;
 	 position:relative;
 	 bottom:0;
-	 left:-2px;
+	 left:-2%;
+	 height: 100% !important;
 	 
  }
  @-webkit-keyframes anim {
@@ -3411,10 +3408,11 @@ input, select, textarea {
  h5{
 	 max-width: 500px !important;
 	 color: rgb(50,50,50);
-	 margin-top: 80px;
 	 border-left: 3px solid rgb(50,50,50);
 	 font-size: 36px;
 	 padding-left: 7px;
+	 margin-left: 80px;
+	 margin-top: -120px !important;
 }
  h2{
 	 margin-top: 10px;
@@ -3443,7 +3441,11 @@ input, select, textarea {
  h5{
 	 max-width:200px !important;
 	 line-height: 1.2;
-    margin-top: 110px;
+    margin-top: -250px;
+	position:relative;
+	bottom: 0;
+	margin-left: 30px
+
 }
 
  h2 {
@@ -3454,9 +3456,6 @@ input, select, textarea {
  }
  .titlePanel{
 	padding-left:35px;
-	padding-top:125px;
-	
-	font-size:40px;
  	}
 	 #two{
 		height: 176vh !important;
