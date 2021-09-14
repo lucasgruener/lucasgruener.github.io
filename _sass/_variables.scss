@@ -8,7 +8,7 @@
     font-size: 50px;
     color: white;
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 150px;
     font-weight: 600;
     -webkit-transition: all 0.3s ease-in-out;
@@ -39,4 +39,6 @@
        transform: translateX(0);
    }
 }
-
+.navbar {
+     background-color: rgba(20, 20, 20, 0.95) !important
+}
