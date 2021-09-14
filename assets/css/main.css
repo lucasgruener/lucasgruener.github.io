@@ -2859,7 +2859,7 @@ input, select, textarea {
 
 			.tiles article {
 				padding: 4em 3em 2em 3em ;
-				height: 30vh;
+				height: 45vh;
 				max-height: 30em;
 				min-height: 20em;
 			}
@@ -2878,7 +2878,7 @@ input, select, textarea {
 
 			.tiles article {
 				padding: 3em 1.5em 1em 1.5em ;
-				height: 16em;
+				height: 65vh !important;
 				max-height: none;
 				min-height: 0;
 			}
@@ -3449,7 +3449,7 @@ input, select, textarea {
 	font-size:40px;
  	}
 	 #two{
-		height: 210vh !important;
+		height: 205vh !important;
 	}
  }
 	#banner {
