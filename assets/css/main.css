@@ -3377,7 +3377,7 @@ input, select, textarea {
 /* Banner */
  #two{
 	 background-color: #006466;
-	 height: 185vh !important;
+	 height: 160vh !important;
  }
  .titlePanel{
 	 width:100%;
@@ -3392,6 +3392,7 @@ input, select, textarea {
 	 background-size:cover;
 	 position:relative;
 	 bottom:0;
+	 left:-2px;
 	 
  }
  @-webkit-keyframes anim {
@@ -3422,7 +3423,7 @@ input, select, textarea {
 	 color: rgb(50,50,50);
 }
  h2{
-	 margin-top: 80px;
+	 margin-top: 10px;
 	 margin-bottom: 150px !important;
  }
  h4 {
@@ -3451,7 +3452,7 @@ input, select, textarea {
 	font-size:40px;
  	}
 	 #two{
-		height: 205vh !important;
+		height: 190vh !important;
 	}
  }
 	#banner {
