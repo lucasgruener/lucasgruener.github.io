@@ -3369,6 +3369,7 @@ input, select, textarea {
  #two{
 	 background-color: #006466;
 	 height: 130vh !important;
+	 max-height:1200px
  }
  .titlePanel{
 	 width:102%;
@@ -3380,6 +3381,7 @@ input, select, textarea {
 	 bottom:0;
 	 left:-2%;
 	 height: 100% !important;
+	 
 	 
  }
  @-webkit-keyframes anim {
