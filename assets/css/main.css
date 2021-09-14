@@ -1782,15 +1782,6 @@ input, select, textarea {
 			width: calc(100% + 0.5em);
 		}
 
-			header.major > :first-child:after {
-				content: '';
-				background-color: #ffffff;
-				display: block;
-				height: 2px;
-				margin: 0.325em 0 0.5em 0;
-				width: 100%;
-			}
-
 		header.major > p {
 			font-size: 0.7em;
 			font-weight: 600;
@@ -2792,7 +2783,7 @@ input, select, textarea {
 				display: block;
 				height: 100%;
 				left: 0;
-				opacity: 0.85;
+				opacity: 0.7;
 				position: absolute;
 				width: 100%;
 				z-index: 2;
@@ -2831,19 +2822,19 @@ input, select, textarea {
 			}
 
 			.tiles article:nth-child(6n - 5):before {
-				background-color: rgba(0,0,0, 0.5);
+				background-color: rgba(0,0,0, 1);
 			}
 
 			.tiles article:nth-child(6n - 4):before {
-				background-color: rgba(0,0,0, 0.5);
+				background-color: rgba(0,0,0, 1);
 			}
 
 			.tiles article:nth-child(6n - 3):before {
-				background-color: rgba(0,0,0, 0.5);
+				background-color: rgba(0,0,0,1);
 			}
 
 			.tiles article:nth-child(6n - 2):before {
-				background-color: rgba(0,0,0, 0.5);
+				background-color: rgba(0,0,0, 1);
 			}
 
 			.tiles article:nth-child(6n - 1):before {
@@ -3377,14 +3368,14 @@ input, select, textarea {
 /* Banner */
  #two{
 	 background-color: #006466;
-	 height: 160vh !important;
+	 height: 152vh !important;
  }
  .titlePanel{
 	 width:100%;
 	 color: rgb(40, 40, 40);
 	 text-align: left;
 	 padding-top:200px;
-	 padding-left:50px;
+	 padding-left:80px;
 	 padding-bottom:250px;
 	 margin-top: 10px;
 	 background-image:url("../../images/back1.svg");
@@ -3423,18 +3414,23 @@ input, select, textarea {
 	 margin-top: 80px;
 	 border-left: 3px solid rgb(50,50,50);
 	 font-size: 36px;
-	 padding-left: 20px;
+	 padding-left: 7px;
 }
  h2{
 	 margin-top: 10px;
 	 margin-bottom: 150px !important;
+	 margin-left:10px;
+	 border-top: 2px solid white
  }
  h4 {
-	 font-size: 38px;
+	 font-size: 34px;
 	
 		margin-top:60px;
 		text-align: right;
 		padding-left: 300px;
+		color: #ef233c;
+		line-height:1.3;
+		font-family: "Consolas"
 
  }
  .fields{
@@ -3452,6 +3448,9 @@ input, select, textarea {
 
  h2 {
 	margin-bottom: 60px !important;
+	font-size: 36px;
+    width: 50vw !important;
+    line-height: 1.2;
  }
  .titlePanel{
 	padding-left:35px;
@@ -3460,7 +3459,7 @@ input, select, textarea {
 	font-size:40px;
  	}
 	 #two{
-		height: 180vh !important;
+		height: 185vh !important;
 	}
  }
 	#banner {
