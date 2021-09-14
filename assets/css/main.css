@@ -3377,7 +3377,7 @@ input, select, textarea {
 /* Banner */
  #two{
 	 background-color: #006466;
-	 height: 200vh !important;
+	 height: 175vh !important;
  }
  .titlePanel{
 	 width:100%;
@@ -3387,7 +3387,7 @@ input, select, textarea {
 	 padding-top:250px;
 	 padding-left:150px;
 	 padding-bottom:250px;
-	 margin-top: 150px;
+	 margin-top: 10px;
 	 background-image:url("../../images/back1.svg");
 	 background-size:cover
 	 
@@ -3449,7 +3449,7 @@ input, select, textarea {
 	font-size:40px;
  	}
 	 #two{
-		height: 220vh !important;
+		height: 210vh !important;
 	}
  }
 	#banner {
