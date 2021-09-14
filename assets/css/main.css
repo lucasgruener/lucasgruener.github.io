@@ -3389,7 +3389,9 @@ input, select, textarea {
 	 padding-bottom:250px;
 	 margin-top: 10px;
 	 background-image:url("../../images/back1.svg");
-	 background-size:cover
+	 background-size:cover;
+	 position:relative;
+	 bottom:0;
 	 
  }
  @-webkit-keyframes anim {
