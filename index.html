@@ -228,7 +228,7 @@
                     autoRotate: true,
                     values: [
                             {x: 100,	y: -20},
-                            {x: 300,	y: 10}
+                            {x: 300,	y: 60}
                         ]
                 },
                 looping : {
@@ -240,7 +240,7 @@
                             {x: 500,	y: -100},
                             {x: 380,	y: 20},
                             {x: 500,	y: 60},
-                            {x: 580,	y: 20},
+                            {x: 580,	y: 40},
                             {x: 620,	y: 15}
                         ]
                 },
@@ -248,9 +248,9 @@
                     curviness: 1.25,
                     autoRotate: true,
                     values: [
-                            {x: 660,	y: 20},
-                            {x: 800,	y: 130},
-                            {x: $(window).width() + 300,	y: -100},
+                            {x: 660,	y: -10},
+                            {x: 800,	y: -120},
+                            {x: $(window).width() + 300,	y: -280},
                         ]
                 }
             };
@@ -264,7 +264,7 @@
                 .add(TweenMax.to($("#plane"), 1, {css:{bezier:flightpath.leave}, ease:Power1.easeInOut}));
     
             // build scene
-            var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 500, offset: -100})
+            var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 580, offset: -100})
                             .setPin("#target")
                             .setTween(tween)
                             .addTo(controller);

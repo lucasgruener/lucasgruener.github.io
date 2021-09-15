@@ -3404,14 +3404,14 @@ div#target {
 	margin-left: -20vw !important;
 }
 .scrollmagic-pin-spacer{
-	padding-top: 24px !important;
-	padding-bottom:24px !important;
+	padding-top: 28px !important;
+	padding-bottom:28px !important;
 	height: 0px !important;
 	margin:0px !important;
 	min-height:0px !important;
 }
 .fields{ 
-	margin-top: -80px !important;
+	margin-top: -60px !important;
 }
  h1{
 	-webkit-animation: anim 0.4s ;
@@ -3426,7 +3426,7 @@ div#target {
 	 font-size: 1.75em;
 	 padding-left: 7px;
 	 margin-left: 80px;
-	 margin-top: -180px !important;
+	 margin-top: -160px ;
 }
  h2{
 	 margin-top: 10px;
@@ -3457,7 +3457,7 @@ div#target {
  h5{
 	 max-width:200px !important;
 	 line-height: 1.2;
-    margin-top: -250px;
+    margin-top: -145px;
 	position:relative;
 	bottom: 0;
 	margin-left: 30px
