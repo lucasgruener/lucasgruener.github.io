@@ -17,6 +17,17 @@
 	</noscript>
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+	<script
+  	src="https://code.jquery.com/jquery-3.6.0.min.js"
+  	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  	crossorigin="anonymous"></script>
+	 
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.js"></script>
 </head>
 
 <body class="is-preload">
@@ -67,7 +78,7 @@
 						<h2>Um pouco do que ja aprendi:</h2>
 					</header>
 					<div data-aos="fade-down">
-						<h4><span style="background-color: rgb(20,20,20)"> JavaScript, Python, Lua, React.js, Node.js, OpenLayers, Leaflet, Pandas, numpy, GDAL, GeoServer, jQuery,
+						<h4><span style="background-color: rgb(30, 30, 30)"> JavaScript, Python, Lua, React.js, Node.js, OpenLayers, Leaflet, Pandas, numpy, GDAL, GeoServer, jQuery,
 							MySQL, PostgreSQL, Git, Wordpress, HTML, CSS </span></h4>
 						
 					</div>
@@ -131,6 +142,10 @@
 			<div class="inner">
 				<section>
 					<h3> ENTRE EM CONTATO:</h3>
+<div class="spacer s0" id="trigger"></div>
+<div id="target">
+	<img id="plane" src="images/triangulo.svg">
+</div>
 					<form method="post" action="#">
 						<div class="fields">
 							<div class="field half">
@@ -205,6 +220,56 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script>
+        $(function () { // wait for document ready
+            var flightpath = {
+                entry : {
+                    curviness: 1.25,
+                    autoRotate: true,
+                    values: [
+                            {x: 100,	y: -20},
+                            {x: 300,	y: 10}
+                        ]
+                },
+                looping : {
+                    curviness: 1.25,
+                    autoRotate: true,
+                    values: [
+                            {x: 510,	y: 60},
+                            {x: 620,	y: -60},
+                            {x: 500,	y: -100},
+                            {x: 380,	y: 20},
+                            {x: 500,	y: 60},
+                            {x: 580,	y: 20},
+                            {x: 620,	y: 15}
+                        ]
+                },
+                leave : {
+                    curviness: 1.25,
+                    autoRotate: true,
+                    values: [
+                            {x: 660,	y: 20},
+                            {x: 800,	y: 130},
+                            {x: $(window).width() + 300,	y: -100},
+                        ]
+                }
+            };
+            // init controller
+            var controller = new ScrollMagic.Controller();
+    
+            // create tween
+            var tween = new TimelineMax()
+                .add(TweenMax.to($("#plane"), 1.2, {css:{bezier:flightpath.entry}, ease:Power1.easeInOut}))
+                .add(TweenMax.to($("#plane"), 2, {css:{bezier:flightpath.looping}, ease:Power1.easeInOut}))
+                .add(TweenMax.to($("#plane"), 1, {css:{bezier:flightpath.leave}, ease:Power1.easeInOut}));
+    
+            // build scene
+            var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: 500, offset: -100})
+                            .setPin("#target")
+                            .setTween(tween)
+                            .addTo(controller);
+        })
+    </script>
 	<script>AOS.init();</script>
 
 </body>

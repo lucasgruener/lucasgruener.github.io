@@ -3369,7 +3369,6 @@ input, select, textarea {
  #two{
 	 background-color: #006466;
 	 height: 130vh !important;
-	 max-height:1200px
  }
  .titlePanel{
 	 width:102%;
@@ -3401,6 +3400,16 @@ input, select, textarea {
        transform: translateY(0);
    }
 }
+div#target {
+	margin-left: -20vw !important;
+}
+.scrollmagic-pin-spacer{
+	padding-top: 0px !important;
+	padding-bottom:0px !important;
+	height: 0px !important;
+	margin:0px !important;
+	min-height:0px !important;
+}
  h1{
 	-webkit-animation: anim 0.4s ;
     animation: anim 0.4s ;
@@ -3411,10 +3420,10 @@ input, select, textarea {
 	 max-width: 500px !important;
 	 color: rgb(50,50,50);
 	 border-left: 3px solid rgb(50,50,50);
-	 font-size: 36px;
+	 font-size: 1.75em;
 	 padding-left: 7px;
 	 margin-left: 80px;
-	 margin-top: -120px !important;
+	 margin-top: -180px !important;
 }
  h2{
 	 margin-top: 10px;
@@ -3423,22 +3432,26 @@ input, select, textarea {
 	 border-top: 2px solid white
  }
  h4 {
-	 font-size: 34px;
+	 font-size: 40px;
 	
 		margin-top:60px;
 		text-align: right;
 		padding-left: 300px;
-		color: #ef233c;
+		color: #b5179e;
 		line-height:1.3;
-		font-family: "Consolas"
+		font-family: 'roboto', sans-serif
 
  }
  .fields{
 	 margin-top:30px !important;
  }
  @media screen and (max-width: 900px) {
+	 #two{
+		max-height:1200px;
+	 }
 	h4 {
 		   padding-left: 60px; 
+		   font-size:36px;
  }
  h5{
 	 max-width:200px !important;
