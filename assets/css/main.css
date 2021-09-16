@@ -3423,7 +3423,7 @@ div#target {
 	 max-width: 500px !important;
 	 color: rgb(50,50,50);
 	 border-left: 3px solid rgb(50,50,50);
-	 font-size: 1.75em;
+	 font-size: 3em;
 	 padding-left: 7px;
 	 margin-left: 80px;
 	 margin-top: -160px ;
@@ -3432,7 +3432,8 @@ div#target {
 	 margin-top: 10px;
 	 margin-bottom: 150px !important;
 	 margin-left:10px;
-	 border-top: 2px solid white
+	 border-top: 2px solid white;
+	 font-size:2.5em;
  }
  h4 {
 	 font-size: 40px;
@@ -3455,20 +3456,21 @@ div#target {
 		   font-size:36px;
  }
  h5{
-	 max-width:200px !important;
+	 max-width:240px !important;
 	 line-height: 1.2;
     margin-top: -145px;
 	position:relative;
 	bottom: 0;
-	margin-left: 30px
+	margin-left: 30px;
+	font-size:2.4em;
 
 }
 
  h2 {
 	margin-bottom: 60px !important;
-	font-size: 36px;
     width: 50vw !important;
     line-height: 1.2;
+	font-size: 2.1em
  }
  .titlePanel{
 	padding-left:35px;
@@ -3650,7 +3652,7 @@ div#target {
 			}
 
 				#banner h1 {
-					font-size: 2em;
+					font-size: 2.6em;
 				}
 
 				#banner > .inner .content {
