@@ -3528,6 +3528,7 @@ div#target {
 
 		#banner h1 {
 			font-size: 3.25em;
+			line-height: 1;
 		}
 
 		#banner > .inner {
