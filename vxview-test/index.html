@@ -115,16 +115,16 @@
 
         // test geometry swapability
 
-        setInterval(function () {
-          const geometry = createGeometry();
+        // setInterval(function () {
+        //   const geometry = createGeometry();
 
-          scene.traverse(function (object) {
-            if (object.isLine) {
-              object.geometry.dispose();
-              object.geometry = geometry;
-            }
-          });
-        }, 1000);
+        //   scene.traverse(function (object) {
+        //     if (object.isLine) {
+        //       object.geometry.dispose();
+        //       object.geometry = geometry;
+        //     }
+        //   });
+        // }, 1000);
       }
 
       function createGeometry() {
