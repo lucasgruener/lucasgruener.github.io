@@ -220,10 +220,11 @@ Access-Control-Allow-Origin: null
 
         loaderAnim.remove();
 
-        
+        console.log(gltf.animations)
+        x=0
         mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction( gltf.animations[ 0 ] ).play();
-
+				mixer.clipAction( gltf.animations[ x ] ).play();
+        animations = gltf.animations
 				animate();
         // let clips = fileAnimations.filter((val) => val.name !== "idle");
         // possibleAnims = clips.map((val) => {
@@ -345,20 +346,23 @@ Access-Control-Allow-Origin: null
 
     if (intersects[0]) {
       var object = intersects[0].object;
+      console.log(object.name)
+      if (object.name === "vanguard_Mesh") {
 
-      if (object.name === "stacy") {
-        if (!currentlyAnimating) {
-          currentlyAnimating = true;
           playOnClick();
-        }
       }
     }
   }
 
   // Get a random animation, and play it
   function playOnClick() {
-    let anim = Math.floor(Math.random() * possibleAnims.length) + 0;
-    playModifierAnimation(idle, 0.25, possibleAnims[anim], 0.25);
+    console.log(animations)
+    mixer.clipAction(animations[x]).stop();
+    x++
+    if (x>3) x=0
+    mixer.clipAction( animations[x] ).play();
+    animate()
+    update()
   }
 
   function playModifierAnimation(from, fSpeed, to, tSpeed) {
@@ -376,8 +380,8 @@ Access-Control-Allow-Origin: null
   document.addEventListener("mousemove", function (e) {
     var mousecoords = getMousePos(e);
     if (neck && waist) {
-      moveJoint(mousecoords, neck, 50);
-      moveJoint(mousecoords, waist, 30);
+      moveJoint(mousecoords, neck, 60);
+      moveJoint(mousecoords, waist, 50);
     }
   });
 
