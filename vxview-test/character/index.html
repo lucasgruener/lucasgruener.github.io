@@ -252,13 +252,13 @@ Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 0.80);
+    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 1);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xF7F6F0, 0.55);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
     dirLight.position.set(-8, 12, 10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
