@@ -1,11 +1,9 @@
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Origin: null
+Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="UTF-8" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <!-- Imporant meta information to make the page as rigid as possible on mobiles, to avoid unintentional zooming on the page itself  -->
     <meta
       name="viewport"
@@ -118,7 +116,6 @@ Access-Control-Allow-Origin: null
       <!-- The canvas element is used to draw the 3D scene -->
       <canvas id="c"></canvas>
     </div>
-   
   </body>
 </html>
 
@@ -187,7 +184,7 @@ Access-Control-Allow-Origin: null
     // stacy_txt.flipY = false;
 
     const stacy_mtl = new THREE.MeshPhongMaterial({
-    //   map: stacy_txt,
+      //   map: stacy_txt,
       color: 0xffffff,
       skinning: true,
     });
@@ -205,14 +202,14 @@ Access-Control-Allow-Origin: null
           if (o.isMesh) {
             o.castShadow = true;
             o.receiveShadow = true;
-            let buildingMaterial = new THREE.MeshPhongMaterial({
-            color: 0x0000ff,
-            shininess: 0,
-            opacity: 0.4,
-            transparent:true,
-            skinning:true
-    });
-          o.material = buildingMaterial
+            // let buildingMaterial = new THREE.MeshPhongMaterial({
+            //   color: 0x0000ff,
+            //   shininess: 0,
+            //   opacity: 0.4,
+            //   transparent: true,
+            //   skinning: true,
+            // });
+            // o.material = buildingMaterial
           }
           // // Reference the neck and waist bones
           // if (o.isBone && o.name === "mixamorigNeck") {
@@ -230,12 +227,12 @@ Access-Control-Allow-Origin: null
 
         loaderAnim.remove();
 
-        console.log(gltf.animations)
-        x=0
-        mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction( gltf.animations[ x ] ).play();
-        animations = gltf.animations
-				animate();
+        console.log(gltf.animations);
+        x = 0;
+        mixer = new THREE.AnimationMixer(model);
+        mixer.clipAction(gltf.animations[x]).play();
+        animations = gltf.animations;
+        animate();
         // let clips = fileAnimations.filter((val) => val.name !== "idle");
         // possibleAnims = clips.map((val) => {
         //   let clip = THREE.AnimationClip.findByName(clips, val.name);
@@ -262,7 +259,7 @@ Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 3);
+    let hemiLight = new THREE.HemisphereLight(0xf7f6f0, 0xf7f6f0, 3);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
@@ -308,7 +305,7 @@ Access-Control-Allow-Origin: null
     if (mixer) {
       mixer.update(clock.getDelta());
     }
-    
+
     if (resizeRendererToDisplaySize(renderer)) {
       const canvas = renderer.domElement;
       camera.aspect = canvas.clientWidth / canvas.clientHeight;
