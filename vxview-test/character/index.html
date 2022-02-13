@@ -1,8 +1,11 @@
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Origin: null
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
-
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <!-- Imporant meta information to make the page as rigid as possible on mobiles, to avoid unintentional zooming on the page itself  -->
     <meta
       name="viewport"
@@ -150,7 +153,7 @@
 
   function init() {
     const MODEL_PATH =
-      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy_lightweight.glb";
+      "./Soldier.glb";
     const canvas = document.querySelector("#c");
     const backgroundColor = 0x000000;
 
