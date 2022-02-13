@@ -128,6 +128,8 @@ Access-Control-Allow-Origin: null
 <!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
 <script src="https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/FBXLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/controls/OrbitControls.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/libs/inflate.min.js"></script>
 <script>
   // Set our main variables
   let scene,
@@ -195,26 +197,34 @@ Access-Control-Allow-Origin: null
     loader.load(
       MODEL_PATH,
       function (gltf) {
-        model = gltf.scene;
+        //scene.add(gltf);
+        model = gltf;
         let fileAnimations = gltf.animations;
-
+        console.log(model);
         model.traverse((o) => {
           if (o.isMesh) {
             o.castShadow = true;
             o.receiveShadow = true;
-
+            let buildingMaterial = new THREE.MeshPhongMaterial({
+            color: 0x0000ff,
+            shininess: 0,
+            opacity: 0.4,
+            transparent:true,
+            skinning:true
+    });
+          o.material = buildingMaterial
           }
-          // Reference the neck and waist bones
-          if (o.isBone && o.name === "mixamorigNeck") {
-            neck = o;
-          }
-          if (o.isBone && o.name === "mixamorigSpine") {
-            waist = o;
-          }
+          // // Reference the neck and waist bones
+          // if (o.isBone && o.name === "mixamorigNeck") {
+          //   neck = o;
+          // }
+          // if (o.isBone && o.name === "mixamorigSpine") {
+          //   waist = o;
+          // }
         });
 
-        model.scale.set(7, 7, 7);
-        model.position.y = -7;
+        model.scale.set(1, 1, 1);
+        model.position.y = 0;
         model.rotation.y = 179.3;
         scene.add(model);
 
@@ -252,13 +262,13 @@ Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 1);
+    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 3);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 3);
     dirLight.position.set(-8, 12, 10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
@@ -274,7 +284,7 @@ Access-Control-Allow-Origin: null
     // Floor
     let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
     let floorMaterial = new THREE.MeshPhongMaterial({
-      color: 0xF7F6F0,
+      color: 0xffffff,
       shininess: 0,
     });
 
@@ -329,114 +339,114 @@ Access-Control-Allow-Origin: null
   window.addEventListener("click", (e) => raycast(e));
   window.addEventListener("touchend", (e) => raycast(e, true));
 
-  function raycast(e, touch = false) {
-    var mouse = {};
-    if (touch) {
-      mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
-      mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
-    } else {
-      mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
-      mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
-    }
-    // update the picking ray with the camera and mouse position
-    raycaster.setFromCamera(mouse, camera);
+  // function raycast(e, touch = false) {
+  //   var mouse = {};
+  //   if (touch) {
+  //     mouse.x = 2 * (e.changedTouches[0].clientX / window.innerWidth) - 1;
+  //     mouse.y = 1 - 2 * (e.changedTouches[0].clientY / window.innerHeight);
+  //   } else {
+  //     mouse.x = 2 * (e.clientX / window.innerWidth) - 1;
+  //     mouse.y = 1 - 2 * (e.clientY / window.innerHeight);
+  //   }
+  //   // update the picking ray with the camera and mouse position
+  //   raycaster.setFromCamera(mouse, camera);
 
-    // calculate objects intersecting the picking ray
-    var intersects = raycaster.intersectObjects(scene.children, true);
+  //   // calculate objects intersecting the picking ray
+  //   var intersects = raycaster.intersectObjects(scene.children, true);
 
-    if (intersects[0]) {
-      var object = intersects[0].object;
-      console.log(object.name)
-      if (object.name === "vanguard_Mesh") {
+  //   if (intersects[0]) {
+  //     var object = intersects[0].object;
+  //     console.log(object.name)
+  //     if (object.name === "vanguard_Mesh") {
 
-          playOnClick();
-      }
-    }
-  }
+  //         playOnClick();
+  //     }
+  //   }
+  // }
 
-  // Get a random animation, and play it
-  function playOnClick() {
-    console.log(animations)
-    mixer.clipAction(animations[x]).stop();
-    x++
-    if (x>3) x=0
-    mixer.clipAction( animations[x] ).play();
-    animate()
-    update()
-  }
+  // // Get a random animation, and play it
+  // function playOnClick() {
+  //   console.log(animations)
+  //   mixer.clipAction(animations[x]).stop();
+  //   x++
+  //   if (x>3) x=0
+  //   mixer.clipAction( animations[x] ).play();
+  //   animate()
+  //   update()
+  // }
 
-  function playModifierAnimation(from, fSpeed, to, tSpeed) {
-    to.setLoop(THREE.LoopOnce);
-    to.reset();
-    to.play();
-    from.crossFadeTo(to, fSpeed, true);
-    setTimeout(function () {
-      from.enabled = true;
-      to.crossFadeTo(from, tSpeed, true);
-      currentlyAnimating = false;
-    }, to._clip.duration * 1000 - (tSpeed + fSpeed) * 1000);
-  }
+  // function playModifierAnimation(from, fSpeed, to, tSpeed) {
+  //   to.setLoop(THREE.LoopOnce);
+  //   to.reset();
+  //   to.play();
+  //   from.crossFadeTo(to, fSpeed, true);
+  //   setTimeout(function () {
+  //     from.enabled = true;
+  //     to.crossFadeTo(from, tSpeed, true);
+  //     currentlyAnimating = false;
+  //   }, to._clip.duration * 1000 - (tSpeed + fSpeed) * 1000);
+  // }
 
-  document.addEventListener("mousemove", function (e) {
-    var mousecoords = getMousePos(e);
-    if (neck && waist) {
-      moveJoint(mousecoords, neck, 60);
-      moveJoint(mousecoords, waist, 50);
-    }
-  });
+  // document.addEventListener("mousemove", function (e) {
+  //   var mousecoords = getMousePos(e);
+  //   if (neck && waist) {
+  //     moveJoint(mousecoords, neck, 60);
+  //     moveJoint(mousecoords, waist, 50);
+  //   }
+  // });
 
-  function getMousePos(e) {
-    return { x: e.clientX, y: e.clientY };
-  }
+  // function getMousePos(e) {
+  //   return { x: e.clientX, y: e.clientY };
+  // }
 
-  function moveJoint(mouse, joint, degreeLimit) {
-    let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit);
-    joint.rotation.y = THREE.Math.degToRad(degrees.x);
-    joint.rotation.x = THREE.Math.degToRad(degrees.y + 10);
-  }
+  // function moveJoint(mouse, joint, degreeLimit) {
+  //   let degrees = getMouseDegrees(mouse.x, mouse.y, degreeLimit);
+  //   joint.rotation.y = THREE.Math.degToRad(degrees.x);
+  //   joint.rotation.x = THREE.Math.degToRad(degrees.y + 10);
+  // }
 
-  function getMouseDegrees(x, y, degreeLimit) {
-    let dx = 0,
-      dy = 0,
-      xdiff,
-      xPercentage,
-      ydiff,
-      yPercentage;
+  // function getMouseDegrees(x, y, degreeLimit) {
+  //   let dx = 0,
+  //     dy = 0,
+  //     xdiff,
+  //     xPercentage,
+  //     ydiff,
+  //     yPercentage;
 
-    let w = { x: window.innerWidth, y: window.innerHeight };
+  //   let w = { x: window.innerWidth, y: window.innerHeight };
 
-    // Left (Rotates neck left between 0 and -degreeLimit)
-    // 1. If cursor is in the left half of screen
-    if (x <= w.x / 2) {
-      // 2. Get the difference between middle of screen and cursor position
-      xdiff = w.x / 2 - x;
-      // 3. Find the percentage of that difference (percentage toward edge of screen)
-      xPercentage = (xdiff / (w.x / 2)) * 100;
-      // 4. Convert that to a percentage of the maximum rotation we allow for the neck
-      dx = ((degreeLimit * xPercentage) / 100) * -1;
-    }
+  //   // Left (Rotates neck left between 0 and -degreeLimit)
+  //   // 1. If cursor is in the left half of screen
+  //   if (x <= w.x / 2) {
+  //     // 2. Get the difference between middle of screen and cursor position
+  //     xdiff = w.x / 2 - x;
+  //     // 3. Find the percentage of that difference (percentage toward edge of screen)
+  //     xPercentage = (xdiff / (w.x / 2)) * 100;
+  //     // 4. Convert that to a percentage of the maximum rotation we allow for the neck
+  //     dx = ((degreeLimit * xPercentage) / 100) * -1;
+  //   }
 
-    // Right (Rotates neck right between 0 and degreeLimit)
-    if (x >= w.x / 2) {
-      xdiff = x - w.x / 2;
-      xPercentage = (xdiff / (w.x / 2)) * 100;
-      dx = (degreeLimit * xPercentage) / 100;
-    }
-    // Up (Rotates neck up between 0 and -degreeLimit)
-    if (y <= w.y / 2) {
-      ydiff = w.y / 2 - y;
-      yPercentage = (ydiff / (w.y / 2)) * 100;
-      // Note that I cut degreeLimit in half when she looks up
-      dy = ((degreeLimit * 0.75 * yPercentage) / 100) * -1;
-    }
-    // Down (Rotates neck down between 0 and degreeLimit)
-    if (y >= w.y / 2) {
-      ydiff = y - w.y / 2;
-      yPercentage = (ydiff / (w.y / 2)) * 100;
-      dy = (degreeLimit * yPercentage) / 100;
-    }
-    return { x: dx, y: dy };
-  }
+  //   // Right (Rotates neck right between 0 and degreeLimit)
+  //   if (x >= w.x / 2) {
+  //     xdiff = x - w.x / 2;
+  //     xPercentage = (xdiff / (w.x / 2)) * 100;
+  //     dx = (degreeLimit * xPercentage) / 100;
+  //   }
+  //   // Up (Rotates neck up between 0 and -degreeLimit)
+  //   if (y <= w.y / 2) {
+  //     ydiff = w.y / 2 - y;
+  //     yPercentage = (ydiff / (w.y / 2)) * 100;
+  //     // Note that I cut degreeLimit in half when she looks up
+  //     dy = ((degreeLimit * 0.75 * yPercentage) / 100) * -1;
+  //   }
+  //   // Down (Rotates neck down between 0 and degreeLimit)
+  //   if (y >= w.y / 2) {
+  //     ydiff = y - w.y / 2;
+  //     yPercentage = (ydiff / (w.y / 2)) * 100;
+  //     dy = (degreeLimit * yPercentage) / 100;
+  //   }
+  //   return { x: dx, y: dy };
+  // }
   function animate() {
     requestAnimationFrame(animate);
 
