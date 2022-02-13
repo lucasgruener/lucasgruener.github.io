@@ -59,7 +59,7 @@ Access-Control-Allow-Origin: null
         height: 100%;
         top: 0;
         left: 0;
-        background: #f1f1f1;
+        background: #ffffff;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,7 +81,7 @@ Access-Control-Allow-Origin: null
         top: 25px;
         width: 50px;
         height: 50px;
-        background-color: #9bffaf;
+        background-color: #ffffff;
         animation: flip 1s infinite;
       }
 
@@ -118,12 +118,7 @@ Access-Control-Allow-Origin: null
       <!-- The canvas element is used to draw the 3D scene -->
       <canvas id="c"></canvas>
     </div>
-    <a
-      target="_blank"
-      href="https://tympanus.net/codrops/2019/10/14/how-to-create-an-interactive-3d-character-with-three-js/"
-      class="tutorial-link"
-      >Follow the tutorial on Codrops</a
-    >
+   
   </body>
 </html>
 
@@ -153,14 +148,14 @@ Access-Control-Allow-Origin: null
 
   function init() {
     const MODEL_PATH =
-      "./Soldier.glb";
+      "https://lucasgruener.github.io/vxview-test/character/Soldier.glb";
     const canvas = document.querySelector("#c");
-    const backgroundColor = 0x000000;
+    const backgroundColor = 0xffffff;
 
     // Init the scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(backgroundColor);
-    scene.fog = new THREE.Fog(backgroundColor, 60, 100);
+    // scene.fog = new THREE.Fog(backgroundColor, 60, 100);
 
     // Init the renderer
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -177,20 +172,20 @@ Access-Control-Allow-Origin: null
     );
     camera.position.z = 20;
     camera.position.x = 0;
-    camera.position.y = -3;
+    camera.position.y = 2;
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0.5, 0);
     controls.update();
     controls.enablePan = false;
     controls.enableDamping = true;
-    let stacy_txt = new THREE.TextureLoader().load(
-      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg"
-    );
-    stacy_txt.flipY = false;
+    // let stacy_txt = new THREE.TextureLoader().load(
+    //   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg"
+    // );
+    // stacy_txt.flipY = false;
 
     const stacy_mtl = new THREE.MeshPhongMaterial({
-      map: stacy_txt,
+    //   map: stacy_txt,
       color: 0xffffff,
       skinning: true,
     });
@@ -207,7 +202,7 @@ Access-Control-Allow-Origin: null
           if (o.isMesh) {
             o.castShadow = true;
             o.receiveShadow = true;
-            o.material = stacy_mtl;
+
           }
           // Reference the neck and waist bones
           if (o.isBone && o.name === "mixamorigNeck") {
@@ -220,31 +215,34 @@ Access-Control-Allow-Origin: null
 
         model.scale.set(7, 7, 7);
         model.position.y = -7;
-
+        model.rotation.y = 179.3;
         scene.add(model);
 
         loaderAnim.remove();
 
-        mixer = new THREE.AnimationMixer(model);
+        
+        mixer = new THREE.AnimationMixer( model );
+				mixer.clipAction( gltf.animations[ 0 ] ).play();
 
-        let clips = fileAnimations.filter((val) => val.name !== "idle");
-        possibleAnims = clips.map((val) => {
-          let clip = THREE.AnimationClip.findByName(clips, val.name);
+				animate();
+        // let clips = fileAnimations.filter((val) => val.name !== "idle");
+        // possibleAnims = clips.map((val) => {
+        //   let clip = THREE.AnimationClip.findByName(clips, val.name);
 
-          clip.tracks.splice(3, 3);
-          clip.tracks.splice(9, 3);
+        //   clip.tracks.splice(3, 3);
+        //   clip.tracks.splice(9, 3);
 
-          clip = mixer.clipAction(clip);
-          return clip;
-        });
+        //   clip = mixer.clipAction(clip);
+        //   return clip;
+        // });
 
-        let idleAnim = THREE.AnimationClip.findByName(fileAnimations, "idle");
+        // let idleAnim = THREE.AnimationClip.findByName(fileAnimations, "idle");
 
-        idleAnim.tracks.splice(3, 3);
-        idleAnim.tracks.splice(9, 3);
+        // idleAnim.tracks.splice(3, 3);
+        // idleAnim.tracks.splice(9, 3);
 
-        idle = mixer.clipAction(idleAnim);
-        idle.play();
+        // idle = mixer.clipAction(idleAnim);
+        // idle.play();
       },
       undefined, // We don't need this function
       function (error) {
@@ -253,14 +251,14 @@ Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.61);
+    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 0.80);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xffffff, 0.54);
-    dirLight.position.set(-8, 12, 8);
+    let dirLight = new THREE.DirectionalLight(0xF7F6F0, 0.55);
+    dirLight.position.set(-8, 12, 10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
     dirLight.shadow.camera.near = 0.1;
@@ -275,14 +273,14 @@ Access-Control-Allow-Origin: null
     // Floor
     let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
     let floorMaterial = new THREE.MeshPhongMaterial({
-      color: 0x0000000,
+      color: 0xF7F6F0,
       shininess: 0,
     });
 
     let floor = new THREE.Mesh(floorGeometry, floorMaterial);
     floor.rotation.x = -0.5 * Math.PI;
     floor.receiveShadow = true;
-    floor.position.y = -11;
+    floor.position.y = -7;
     scene.add(floor);
 
     //   let geometry = new THREE.SphereGeometry(8, 32, 32);
@@ -438,7 +436,7 @@ Access-Control-Allow-Origin: null
   function animate() {
     requestAnimationFrame(animate);
 
-    controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
+    //controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
 
     render();
   }
