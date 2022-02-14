@@ -123,7 +123,7 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js"></script>
 
 <!-- This brings in the ability to load custom 3D objects in the .gltf file format. Blender allows the ability to export to this format out the box -->
-<script src="https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/FBXLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/controls/OrbitControls.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/libs/inflate.min.js"></script>
@@ -147,7 +147,7 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
 
   function init() {
     const MODEL_PATH =
-      "https://lucasgruener.github.io/vxview-test/charAndEnv/teste.glb";
+      "https://lucasgruener.github.io/vxview-test/charAndEnv/testefbx.fbx";
     const canvas = document.querySelector("#c");
     const backgroundColor = 0xffffff;
 
@@ -189,7 +189,7 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
       skinning: true,
     });
 
-    var loader = new THREE.GLTFLoader();
+    var loader = new THREE.FBXLoader();
 
     loader.load(
       MODEL_PATH,
