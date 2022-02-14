@@ -149,7 +149,7 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
     const MODEL_PATH =
       "https://lucasgruener.github.io/vxview-test/charAndEnv/testefbx.fbx";
     const canvas = document.querySelector("#c");
-    const backgroundColor = 0xffffff;
+    const backgroundColor = 0x000000;
 
     // Init the scene
     scene = new THREE.Scene();
@@ -220,9 +220,9 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
           // }
         });
 
-        model.scale.set(2, 2, 2);
-        model.position.y = 0;
-        model.rotation.y = 179.3;
+        model.scale.set(3, 3, 3);
+        model.position.y = -22;
+        //model.rotation.y = 179.3;
         scene.add(model);
 
         loaderAnim.remove();
@@ -259,13 +259,13 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xf7f6f0, 0xf7f6f0, 1);
+    let hemiLight = new THREE.HemisphereLight(0xf7f6f0, 0xf7f6f0, 0.7);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
     dirLight.position.set(-8, 12, 10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
@@ -289,7 +289,7 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
     floor.rotation.x = -0.5 * Math.PI;
     floor.receiveShadow = true;
     floor.position.y = -7;
-    scene.add(floor);
+    //scene.add(floor);
 
     //   let geometry = new THREE.SphereGeometry(8, 32, 32);
     //   let material = new THREE.MeshBasicMaterial({ color: 0x9bffaf }); // 0xf2ce2e
