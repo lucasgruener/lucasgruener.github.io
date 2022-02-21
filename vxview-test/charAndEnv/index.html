@@ -1,3 +1,4 @@
+
 Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
 <!DOCTYPE html>
 <html lang="en">
@@ -147,9 +148,9 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
 
   function init() {
     const MODEL_PATH =
-      "https://lucasgruener.github.io/vxview-test/charAndEnv/testefbx.fbx";
+      "https://lucasgruener.github.io/vxview-test/charAndEnv/scene2.fbx";
     const canvas = document.querySelector("#c");
-    const backgroundColor = 0x000000;
+    const backgroundColor = 0xffffff;
 
     // Init the scene
     scene = new THREE.Scene();
@@ -202,14 +203,14 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
           if (o.isMesh) {
             o.castShadow = true;
             o.receiveShadow = true;
-            // let buildingMaterial = new THREE.MeshPhongMaterial({
-            //   color: 0x0000ff,
-            //   shininess: 0,
-            //   opacity: 0.4,
-            //   transparent: true,
-            //   skinning: true,
-            // });
-            // o.material = buildingMaterial
+            let buildingMaterial = new THREE.MeshPhongMaterial({
+              color: 0x0000ff,
+              shininess: 0,
+              opacity: 0.6,
+              transparent: true,
+              //skinning: true,
+            });
+           // o.material.skinning = false
           }
           // // Reference the neck and waist bones
           // if (o.isBone && o.name === "mixamorigNeck") {
@@ -221,18 +222,18 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
         });
 
         model.scale.set(3, 3, 3);
-        model.position.y = -22;
+        model.position.y = -5;
         //model.rotation.y = 179.3;
         scene.add(model);
 
         loaderAnim.remove();
 
-        console.log(gltf.animations);
-        x = 0;
-        mixer = new THREE.AnimationMixer(model);
-        mixer.clipAction(gltf.animations[x]).play();
-        animations = gltf.animations;
-        animate();
+        // console.log(gltf.animations);
+        // x = 0;
+        // mixer = new THREE.AnimationMixer(model);
+        // mixer.clipAction(gltf.animations[x]).play();
+        // animations = gltf.animations;
+        // animate();
         // let clips = fileAnimations.filter((val) => val.name !== "idle");
         // possibleAnims = clips.map((val) => {
         //   let clip = THREE.AnimationClip.findByName(clips, val.name);
@@ -259,15 +260,15 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xf7f6f0, 0xf7f6f0, 0.8);
+    let hemiLight = new THREE.HemisphereLight(0x005f73, 0x005f73, 0.1);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
-    scene.add(hemiLight);
+    //scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 0.2);
     dirLight.position.set(-8, 12, 10);
-    dirLight.castShadow = true;
+    //dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
     dirLight.shadow.camera.near = 0.1;
     dirLight.shadow.camera.far = 1500;
@@ -276,8 +277,11 @@ Access-Control-Allow-Origin: * Access-Control-Allow-Origin: null
     dirLight.shadow.camera.top = d;
     dirLight.shadow.camera.bottom = d * -1;
     // Add directional Light to scene
-    scene.add(dirLight);
-
+    //scene.add(dirLight);
+    // let dirLight2 = new THREE.DirectionalLight(0x94d2bd, );
+    // dirLight2.position.set(-8, 12, 10);
+    // scene.add(dirLight2);
+    //dirLight.castShadow = true;
     // Floor
     let floorGeometry = new THREE.PlaneGeometry(5000, 5000, 1, 1);
     let floorMaterial = new THREE.MeshPhongMaterial({
