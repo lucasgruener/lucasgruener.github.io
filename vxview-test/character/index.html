@@ -178,7 +178,7 @@ access-control-allow-origin: *
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.target.set(0, -0.5, 0);
     controls.update();
-    controls.enablePan = false;
+    //controls.enablePan = false;
     controls.enableDamping = true;
     // let stacy_txt = new THREE.TextureLoader().load(
     //   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg"
@@ -253,7 +253,7 @@ access-control-allow-origin: *
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
+    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 2);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
