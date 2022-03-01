@@ -149,7 +149,7 @@ access-control-allow-origin: *
 
   function init() {
     const MODEL_PATH =
-      "https://lucasgruener.github.io/vxview-test/character/scene.gltf";
+      "https://lucasgruener.github.io/vxview-test/character/antena.glb";
     const canvas = document.querySelector("#c");
     const backgroundColor = 0x000000;
 
@@ -224,7 +224,7 @@ access-control-allow-origin: *
         console.log(gltf.animations)
         x=0
         mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction( gltf.animations[ x ] ).play();
+				mixer.clipAction(gltf.animations[x]).play();
         animations = gltf.animations
 				animate();
         // let clips = fileAnimations.filter((val) => val.name !== "idle");
