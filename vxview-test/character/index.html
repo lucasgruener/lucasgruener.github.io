@@ -198,7 +198,7 @@ access-control-allow-origin: *
       function (gltf) {
         model = gltf.scene;
         let fileAnimations = gltf.animations;
-
+        console.log(gltf)
         model.traverse((o) => {
           if (o.isMesh) {
             o.castShadow = true;
@@ -253,13 +253,13 @@ access-control-allow-origin: *
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 2);
+    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 4);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
 
     let d = 8.25;
-    let dirLight = new THREE.DirectionalLight(0xffffff, 2);
+    let dirLight = new THREE.DirectionalLight(0xffffff, 3);
     dirLight.position.set(-8, 12, 10);
     dirLight.castShadow = true;
     dirLight.shadow.mapSize = new THREE.Vector2(1024, 1024);
