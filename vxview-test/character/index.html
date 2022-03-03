@@ -1,6 +1,5 @@
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Origin: null
-access-control-allow-origin: *
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +31,7 @@ access-control-allow-origin: *
       }
       body {
         position: relative;
-        color: black;
+        color: white;
         letter-spacing: 2px;
         font-size: 11px;
         font-family: "Poppins", sans-serif;
@@ -130,6 +129,8 @@ access-control-allow-origin: *
 <script src="https://cdn.jsdelivr.net/gh/mrdoob/Three.js@r92/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.122.0/examples/js/controls/OrbitControls.min.js"></script>
 <script>
+  /* eslint-disable */
+
   // Set our main variables
   let scene,
     renderer,
@@ -149,14 +150,14 @@ access-control-allow-origin: *
 
   function init() {
     const MODEL_PATH =
-      "https://lucasgruener.github.io/vxview-test/character/antena.glb";
+      "./antenna.glb";
     const canvas = document.querySelector("#c");
-    const backgroundColor = 0xb7b7a4;
+    const backgroundColor = 0x0a9396;
 
     // Init the scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(backgroundColor);
-    // scene.fog = new THREE.Fog(backgroundColor, 60, 100);
+   // scene.fog = new THREE.Fog(backgroundColor, 10, 300);
 
     // Init the renderer
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -171,7 +172,7 @@ access-control-allow-origin: *
       0.1,
       1000
     );
-    camera.position.z = 30;
+    camera.position.z = 20;
     camera.position.x = 0;
     camera.position.y = 2;
 
@@ -198,7 +199,7 @@ access-control-allow-origin: *
       function (gltf) {
         model = gltf.scene;
         let fileAnimations = gltf.animations;
-        console.log(gltf)
+
         model.traverse((o) => {
           if (o.isMesh) {
             o.castShadow = true;
@@ -224,7 +225,7 @@ access-control-allow-origin: *
         console.log(gltf.animations)
         x=0
         mixer = new THREE.AnimationMixer( model );
-				mixer.clipAction(gltf.animations[x]).play();
+				mixer.clipAction( gltf.animations[ x ] ).play();
         animations = gltf.animations
 				animate();
         // let clips = fileAnimations.filter((val) => val.name !== "idle");
@@ -253,7 +254,7 @@ access-control-allow-origin: *
     );
 
     // Add lights
-    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 4);
+    let hemiLight = new THREE.HemisphereLight(0xF7F6F0, 0xF7F6F0, 2);
     hemiLight.position.set(0, 50, 0);
     // Add hemisphere light to scene
     scene.add(hemiLight);
@@ -449,4 +450,5 @@ access-control-allow-origin: *
   function render() {
     renderer.render(scene, camera);
   }
+  
 </script>
